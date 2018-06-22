@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+
+<body>
+
+  <div id="game">
+    <p>You chose <span id ="user-text"></span></p>
+    <p>The computer chose <span id="computer-text"></span></p>
+    <p>Win: <span id = "win-text"></span></p> 
+    <p>Loss: <span id = "loss-text"></span></p> 
+    <p>Tie: <span id = "tie-text"></span></p> 
+  </div>
+  
+
+  <script type="text/javascript">
+    var userText = document.getElementById("user-text");
+    var computerText = document.getElementById("computer-text");
+    var winText = document.getElementById("win-text");
+    var lossText = document.getElementById("loss-text");
+    var tieText = document.getElementById("tie-text");
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s"];
+    var win = 0;
+    var loss = 0;
+    var tie = 0;
+    winText.textContent = win
+    lossText.textContent = loss
+    tieText.textContent = tie
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+      if (userGuess == "r" || userGuess == "p" || userGuess == "s") {
+        userText.textContent = userGuess;
+      
+        // Randomly chooses a choice from the options array. This is the Computer's guess.
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        computerText.textContent = computerGuess;
+
+        /* // Alerts the key the user pressed (userGuess).
+        alert("User guess: " + userGuess);
+
+        // Alerts the Computer's guess.
+        alert("Computer guess: " + computerGuess); */
+        
+        //Conditions
+        if (userGuess == "r" && computerGuess == "s") {
+          win++
+        }
+        if (userGuess == "r" && computerGuess == "p") {
+          loss++
+        }
+        if (userGuess == "r" && computerGuess == "r") {
+          tie++
+        }
+        if (userGuess == "p" && computerGuess == "r") {
+          win++
+        }
+        if (userGuess == "p" && computerGuess == "s") {
+          loss++
+        }
+        if (userGuess == "p" && computerGuess == "p") {
+          tie++
+        }
+        if (userGuess == "s" && computerGuess == "p") {
+          win++
+        }
+        if (userGuess == "s" && computerGuess == "r") {
+          loss++
+        }
+        if (userGuess == "s" && computerGuess == "s") {
+          tie++
+        }
+      }
+      else {
+        alert("You can only press 'r', 'p', or 's'")
+      }
+      winText.textContent = win
+      lossText.textContent = loss
+      tieText.textContent = tie
+    };
+  </script>
+  
+
+</body>
+
+</html>
